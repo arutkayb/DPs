@@ -1,5 +1,6 @@
 # DPs
 Some design patterns with tests
 
--Template Method Pattern
--Observer Pattern
+Currently implemented:
+1-Template Method Pattern
+2-Observer Pattern
