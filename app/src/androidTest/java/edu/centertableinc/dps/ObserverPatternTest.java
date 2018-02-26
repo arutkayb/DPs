@@ -6,6 +6,8 @@ package edu.centertableinc.dps;
 
 import android.support.test.runner.AndroidJUnit4;
 
+import junit.framework.Assert;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -27,9 +29,17 @@ public class ObserverPatternTest {
 
         biteCoin.setNewPrice(5);
 
+        Assert.assertEquals(investor1.getCurrentPrice() == 5, true);
+        Assert.assertEquals(investor2.getCurrentPrice() == 5, true);
+        Assert.assertEquals(investor2.getCurrentPrice() == 5, true);
+
         biteCoin.detach(investor2);
 
         biteCoin.setNewPrice(3);
+
+        Assert.assertEquals(investor1.getCurrentPrice() == 3, true);
+        Assert.assertEquals(investor2.getCurrentPrice() == 5, true);
+        Assert.assertEquals(investor3.getCurrentPrice() == 3, true);
 
         biteCoin.makeSomeAction();
     }

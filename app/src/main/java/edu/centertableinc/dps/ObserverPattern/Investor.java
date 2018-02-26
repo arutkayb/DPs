@@ -8,6 +8,7 @@ import android.util.Log;
 
 public class Investor implements Observer {
     String mName;
+    int mCurrentPrice;
 
     public Investor(String name)
     {
@@ -24,12 +25,19 @@ public class Investor implements Observer {
         if(event != null) {
             Log.d("ObserverPattern", "Investor name: " + mName + ",  Investor.update, event description: " + event.getDescription());
 
-            if (event instanceof PriceChangedEvent)
-                Log.d("ObserverPattern", "New price " + ((PriceChangedEvent) event).getNewPrice());
+            if (event instanceof PriceChangedEvent) {
+                mCurrentPrice = ((PriceChangedEvent) event).getNewPrice();
+                Log.d("ObserverPattern", "New price " + mCurrentPrice);
+            }
         }
         else
         {
             Log.e("ObserverPattern", "Null event");
         }
+    }
+
+    public int getCurrentPrice()
+    {
+        return mCurrentPrice;
     }
 }
